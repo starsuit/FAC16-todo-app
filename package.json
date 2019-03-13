@@ -2,10 +2,10 @@
   "name": "Week-2-project-JASH",
   "version": "1.0.0",
   "description": "to-do app",
-  "main": "index.js",
+  "main": "./skeleton/logic.js",
   "scripts": {
-    "test": "nodemon *.test.js | tap-spec",
-    "coverage": "istanbul cover ./test.js"
+    "test": "nodemon ./skeleton/test.js | tap-spec",
+    "coverage": "istanbul cover ./skeleton/test.js"
   },
   "repository": {
     "type": "git",
