@@ -45,12 +45,26 @@ test("addTodo returns an object with description, id and done", t => {
   t.end();
 });
 
-test("addTodo returns an object with description, id and done", t => {
-  const actual = logic.addTodo([], "tester");
-  const expected = t.deepEqual(
-    actual,
-    expected,
-    "addTodo should return an object with description, id and done"
-  );
+test("addTodo add object to existing array(of objects)", t => {
+  const actual = logic.addTodo([
+    {
+    id: 0,
+    description: "tester",
+    done: false
+    }
+], "do some code");
+  const expected = [
+    {
+    id: 0,
+    description: "tester",
+    done: false
+    },
+    {
+    id: 0,
+    description: "do some code",
+    done: false
+    }
+  ]
+  t.deepEqual(actual, expected, "addTodo should add object to existing array");
   t.end();
 });
