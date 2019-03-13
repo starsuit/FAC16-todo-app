@@ -13,13 +13,44 @@ test("addTodo returns an object", t => {
   t.end();
 });
 
-test("addTodo returns an object with text added", t => {
+// test("addTodo returns an object with text added", t => {
+//   const actual = logic.addTodo([], "tester");
+//   const expected = [
+//     {
+//       description: "tester"
+//     }
+//   ];
+//   t.deepEqual(
+//     actual,
+//     expected,
+//     "addTodo should return an object with text added"
+//   );
+//   t.end();
+// });
+
+test("addTodo returns an object with description, id and done", t => {
   const actual = logic.addTodo([], "tester");
   const expected = [
     {
-      description: "tester"
+      id: 0,
+      description: "tester",
+      done: false
     }
   ];
-  t.equal(actual, expected, "addTodo should return an object");
+  t.deepEqual(
+    actual,
+    expected,
+    "addTodo should return an object with description, id and done"
+  );
+  t.end();
+});
+
+test("addTodo returns an object with description, id and done", t => {
+  const actual = logic.addTodo([], "tester");
+  const expected = t.deepEqual(
+    actual,
+    expected,
+    "addTodo should return an object with description, id and done"
+  );
   t.end();
 });

@@ -25,6 +25,11 @@ var todoFunctions = {
 
   addTodo: function(todos, newTodo) {
     let newObj = todoFunctions.cloneArrayOfObjects(todos);
+    newObj.push({
+      id: 0,
+      description: newTodo,
+      done: false
+    });
     return newObj;
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
@@ -54,7 +59,8 @@ var todos = [];
 var newTodo = {
   description: "make smoothie out of things that should really be cooked"
 };
-var updatedTodos = todoFunctions.addTodo(todos, newTodo);
+var blah = "hello, it's thursday";
+var updatedTodos = todoFunctions.addTodo(todos, blah);
 console.log(updatedTodos);
 
 // Why is this if statement necessary?
