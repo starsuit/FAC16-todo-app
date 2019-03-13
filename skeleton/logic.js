@@ -26,7 +26,7 @@ var todoFunctions = {
   addTodo: function(todos, newTodo) {
     let newObj = todoFunctions.cloneArrayOfObjects(todos);
     newObj.push({
-      id: 0,
+      id: todoFunctions.generateId(),
       description: newTodo,
       done: false
     });
@@ -37,6 +37,8 @@ var todoFunctions = {
     // hint: array.concat
   },
   deleteTodo: function(todos, idToDelete) {
+
+    
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // return a new array, this should not contain any todo with an id of idToDelete
     // hint: array.filter
@@ -54,14 +56,6 @@ var todoFunctions = {
     // hint: array.slice, array.sort
   }
 };
-
-var todos = [];
-var newTodo = {
-  description: "make smoothie out of things that should really be cooked"
-};
-var blah = "hello, it's thursday";
-var updatedTodos = todoFunctions.addTodo(todos, blah);
-console.log(updatedTodos);
 
 // Why is this if statement necessary?
 // The answer has something to do with needing to run code both in the browser and in Node.js
