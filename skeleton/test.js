@@ -12,3 +12,14 @@ test("addTodo returns an object", t => {
   t.equal(actual, expected, "addTodo should return an object");
   t.end();
 });
+
+test("addTodo returns an object with text added", t => {
+  const actual = logic.addTodo([], "tester");
+  const expected = [
+    {
+      description: "tester"
+    }
+  ];
+  t.equal(actual, expected, "addTodo should return an object");
+  t.end();
+});
