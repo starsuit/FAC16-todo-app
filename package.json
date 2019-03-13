@@ -1,0 +1,26 @@
+{
+  "name": "Week-2-project-JASH",
+  "version": "1.0.0",
+  "description": "to-do app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAC-Sixteen/Week-2-project-JASH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAC-Sixteen/Week-2-project-JASH/issues"
+  },
+  "homepage": "https://github.com/FAC-Sixteen/Week-2-project-JASH#readme",
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "nodemon": "^1.18.10",
+    "tap-test": "0.0.2",
+    "tape": "^4.10.1"
+  }
+}
