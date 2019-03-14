@@ -17,25 +17,27 @@
     console.log(todo);
     var todoNode = document.createElement("li");
     // you will need to use addEventListener
-
+      todoNode.classList.add("todo-panel");
     // add span holding description
     let t = document.createTextNode(todo.description);
-    todoNode.appendChild(t);
+    
     // this adds the delete button
     var deleteButtonNode = document.createElement("button");
+    deleteButtonNode.classList.add("button-delete");
+    deleteButtonNode.textContent = "X";
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
-    todoNode.appendChild(deleteButtonNode);
+    
 
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
-
+      markTodoButtonNode.classList.add("checkbox-unchecked");
     if (todo.done) {
-      markTodoButtonNode.classList.add("red");
+      markTodoButtonNode.classList.add("checkbox-checked");
     } else {
-      markTodoButtonNode.classList.remove("red");
+      markTodoButtonNode.classList.remove("checkbox-checked");
     }
     // markTodoButtonNode.classList.add("blue");
     // markTodoButtonNode.setAttribute("type", "checkbox");
@@ -57,6 +59,8 @@
     });
     todoNode.appendChild(markTodoButtonNode);
     // add classes for css
+    todoNode.appendChild(t);
+    todoNode.appendChild(deleteButtonNode);
 
     return todoNode;
   };
@@ -82,6 +86,7 @@
   // you do not need to change this function
   var renderState = function(state) {
     var todoListNode = document.createElement("ul");
+      todoListNode.classList.add("todo-panel-container")
 
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
