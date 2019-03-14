@@ -31,10 +31,13 @@
 
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
+    // markTodoButtonNode.setAttribute("type", "checkbox");
     markTodoButtonNode.addEventListener("click", function(event) {
-      // console.log(event);
-      // console.log(event.path[0]);
-      // markTodoButtonNode.textContent = "X";
+      // event.preventDefault();
+      markTodoButtonNode.classList.toggle("blue");
+      console.log(event);
+      console.log(event.path[0]);
+      // markTodoButtonNode.checked = false;
       var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     });
@@ -47,14 +50,11 @@
   // bind create todo form
   if (addTodoForm) {
     addTodoForm.addEventListener("submit", function(event) {
-      // https://developer.mozilla.org/en-US/docs/Web/Events/submit
-      // what does event.preventDefault do?
-      // what is inside event.target?
-
-      var description = "?"; // event.target ....
-
-      // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      event.preventDefault();
+      console.log(event);
+      var description = event.target.elements["description"].value;
+      var newState = todoFunctions.addTodo(state, description);
+      event.target.elements["description"].value = "";
       update(newState);
     });
   }
