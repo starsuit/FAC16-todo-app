@@ -158,3 +158,55 @@ test("deleteTodo removes something", t => {
 
   t.end();
 });
+
+test("markTodo returns an array", t => {
+  const actual = logic.markTodo([], 0);
+  const expected = [];
+  t.equal(Array.isArray(actual), true, "markTodo should return an array");
+
+  t.end();
+});
+
+test("markTodo returns array changes the content, but NOT length", t => {
+  const actual = logic.markTodo(testArray, 0);
+  const expected = testArray;
+  t.notDeepEqual(actual, expected, "markTodo should return an array with changed content, same length");
+  t.equal(actual.length, expected.length, "markTodo has not changed the length")
+  t.end();
+});
+
+test("markTodo returns array with specified object, done value toggled", t => {
+  const actual = logic.markTodo(testArray, 0);
+  const expected = [{
+    id: 0,
+    description: "tester",
+    done: true
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: false
+  }
+];
+  t.deepEqual(actual, expected, "markTodo should feature a toggled done");
+
+  t.end();
+});
+
+test("markTodo returns array with toggled done, toggled back to false", t => {
+  const actual = logic.markTodo([{
+    id: 0,
+    description: "tester",
+    done: true
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: false
+  }
+], 0);
+  const expected = testArray;
+  t.deepEqual(actual, expected, "markTodo should feature a toggled done, toggled back to false");
+
+  t.end();
+});
