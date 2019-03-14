@@ -1,23 +1,27 @@
-
 body {
   margin: 0;
   display: flex;
   justify-content: center;
 }
 
-.button-delete{
+.button-delete {
   background-color: transparent;
   height: 1.5rem;
   width: 1.5rem;
   padding: 0;
-  color: orangered;
+  color: tomato;
   border: 0;
+  border-radius: 2px;
+}
+
+.button-delete:hover {
+  background-color: tomato;
+  color: white;
 }
 
 .button-submit {
   border-radius: 2px;
 }
-
 
 .wholecontainer {
   border: 1px solid black;
@@ -30,13 +34,13 @@ body {
 
 .wholecontainer-header {
   border-bottom: 1px solid grey;
-  background-color: hsl(90,42%,47%);
+  background-color: hsl(150, 50%, 50%);
   border-radius: 4px 4px 0px 0px;
 }
 
 .header__title {
   text-align: center;
-  color: hsl(0,0%,97%);
+  color: hsl(0, 0%, 97%);
 }
 
 @media only screen and (min-width: 420px) {
@@ -55,15 +59,27 @@ body {
   width: 1.5rem;
 }
 
+.checkbox-unchecked:hover {
+  background-color: hsl(150, 50%, 50%);
+}
+
 .checkbox-checked {
-  background-color: rgb(140, 173, 140);
+  background-color: hsl(150, 50%, 50%);
   height: 1.5rem;
   width: 1.5rem;
 }
 
+.todo-description {
+  color: hsl(150, 10%, 20%);
+}
+
+.checkbox-checked + .todo-description {
+  color: hsl(150, 10%, 70%);
+}
+
 .todo-panel {
-  background-color: rgb(140, 173, 140);
-  border: solid grey;
+  /* background-color: rgb(140, 173, 140); */
+  border: 1px solid hsl(150, 20%, 50%);
   margin: 0.5em;
   padding: 0.5em;
   border-radius: 2px;

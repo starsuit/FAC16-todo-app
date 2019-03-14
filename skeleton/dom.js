@@ -14,13 +14,15 @@
 
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
-    console.log(todo);
     var todoNode = document.createElement("li");
     // you will need to use addEventListener
-      todoNode.classList.add("todo-panel");
+    todoNode.classList.add("todo-panel");
     // add span holding description
     let t = document.createTextNode(todo.description);
-    
+    let textSpan = document.createElement("div");
+    textSpan.appendChild(t);
+    textSpan.classList.add("todo-description");
+
     // this adds the delete button
     var deleteButtonNode = document.createElement("button");
     deleteButtonNode.classList.add("button-delete");
@@ -29,11 +31,10 @@
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
-    
 
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
-      markTodoButtonNode.classList.add("checkbox-unchecked");
+    markTodoButtonNode.classList.add("checkbox-unchecked");
     if (todo.done) {
       markTodoButtonNode.classList.add("checkbox-checked");
     } else {
@@ -58,8 +59,7 @@
       update(newState);
     });
     todoNode.appendChild(markTodoButtonNode);
-    // add classes for css
-    todoNode.appendChild(t);
+    todoNode.appendChild(textSpan);
     todoNode.appendChild(deleteButtonNode);
 
     return todoNode;
@@ -69,7 +69,6 @@
   if (addTodoForm) {
     addTodoForm.addEventListener("submit", function(event) {
       event.preventDefault();
-      console.log(event);
       var description = event.target.elements["description"].value;
       var newState = todoFunctions.addTodo(state, description);
       event.target.elements["description"].value = "";
@@ -86,7 +85,7 @@
   // you do not need to change this function
   var renderState = function(state) {
     var todoListNode = document.createElement("ul");
-      todoListNode.classList.add("todo-panel-container")
+    todoListNode.classList.add("todo-panel-container");
 
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
