@@ -1,3 +1,10 @@
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
 .button-delete{
   background-color: transparent;
   height: 1.5rem;
@@ -11,6 +18,37 @@
   border-radius: 2px;
 }
 
+
+.wholecontainer {
+  border: 1px solid black;
+  border-radius: 5px 5px 0px 0px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.wholecontainer-header {
+  border-bottom: 1px solid grey;
+  background-color: hsl(90,42%,47%);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.header__title {
+  text-align: center;
+  color: hsl(0,0%,97%);
+}
+
+@media only screen and (min-width: 420px) {
+  .wholecontainer {
+    width: 420px;
+    /*float: center;*/
+  }
+
+  body {
+    padding-top: 20vh;
+  }
+}
 .checkbox-unchecked {
   background-color: white;
   height: 1.5rem;
