@@ -110,3 +110,51 @@ test("addTodo add object to existing array(of objects)", t => {
 //   t.deepEqual(actual, expected, "addTodo should add object to existing array and increment id");
 //   t.end();
 // });
+
+test("deleteTodo returns an array", t => {
+  const actual = logic.deleteTodo([], 0);
+  const expected = [];
+  t.equal(Array.isArray(actual), true, "deleteTodo should return an array");
+
+  t.end();
+});
+
+// test("deleteTodo takes a number", t => {
+//   const actual = logic.deleteTodo([], 0);
+//   const expected = "number";
+//   t.equal(actual, expected, "deleteTodo should take a  number");
+
+//   t.end();
+// });
+
+let testArray = [
+  {
+    id: 0,
+    description: "tester",
+    done: false
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: false
+  }
+];
+
+test("deleteTodo removes something", t => {
+  const actual = logic.deleteTodo(testArray, 0);
+  const expected = [
+    {
+      id: 1,
+      description: "do some code",
+      done: false
+    }
+  ];
+  t.equal(
+    actual.length,
+    testArray.length - 1,
+    "deleteTodo should remove an object"
+  );
+  t.deepEqual(actual, expected, "deleteTodo should remove selected object");
+
+  t.end();
+});
