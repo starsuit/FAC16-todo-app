@@ -31,12 +31,26 @@
 
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
+
+    if (todo.done) {
+      markTodoButtonNode.classList.add("red");
+    } else {
+      markTodoButtonNode.classList.remove("red");
+    }
+    // markTodoButtonNode.classList.add("blue");
     // markTodoButtonNode.setAttribute("type", "checkbox");
     markTodoButtonNode.addEventListener("click", function(event) {
-      // event.preventDefault();
-      markTodoButtonNode.classList.toggle("blue");
-      console.log(event);
-      console.log(event.path[0]);
+      // console.log(event);
+      // console.log(markTodoButtonNode.classList);
+      // if (markTodoButtonNode.classList[0] === "blue") {
+      //   markTodoButtonNode.classList.remove("blue");
+      //   markTodoButtonNode.classList.add("red");
+      // }
+
+      // console.log(markTodoButtonNode.classList);
+      // markTodoButtonNode.classList.toggle("blue");
+      // console.log(event);
+      // console.log(event.path[0]);
       // markTodoButtonNode.checked = false;
       var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
