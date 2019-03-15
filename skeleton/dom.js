@@ -29,6 +29,7 @@
     var deleteButtonNode = document.createElement("button");
     deleteButtonNode.classList.add("button-delete");
     deleteButtonNode.textContent = "X";
+    deleteButtonNode.setAttribute("aria-label", "delete todo");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
@@ -51,6 +52,7 @@
 
     markTodoButtonNode.htmlFor = `checkbox${todo.id}`;
     markTodoButtonNode.classList.add("check-label");
+    markTodoButtonNode.setAttribute("aria-label", "toggle checkbox");
 
     // append checkbox input, visual checkbox and textspan to label
 

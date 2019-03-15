@@ -9,16 +9,23 @@ body {
   height: 1.5rem;
   width: 1.5rem;
   padding: 0;
-  color: orangered;
+  color: hsl(0, 100%, 20%);
   border: 0;
 }
 
 .button-submit {
   border-radius: 2px;
+  border: 1px solid black;
+  box-shadow: 1px 1px;
+}
+
+.button-submit:hover {
+  border-radius: 2px;
+  border: 2px solid black;
 }
 
 .wholecontainer {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5px 5px 0px 0px;
   width: 100vw;
   display: flex;
@@ -34,13 +41,14 @@ body {
 
 .header__title {
   text-align: center;
-  color: hsl(0, 0%, 97%);
+  color: rgba(0, 0, 0, 0.883);
 }
 
 @media only screen and (min-width: 420px) {
   .wholecontainer {
     width: 420px;
     /*float: center;*/
+    margin-bottom: 5vh;
   }
 
   body {
@@ -102,8 +110,30 @@ body {
   padding: 0;
 }
 
+.add-todo-container {
+  border-top: 2px solid black;
+}
+
 .form {
   margin: 0.5em;
   display: flex;
   justify-content: space-between;
+}
+
+.form-textbox {
+  border: 1px solid black;
+  padding: 0.5em;
+  height: 2em;
+  width: 25em;
+}
+
+.form-label {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
