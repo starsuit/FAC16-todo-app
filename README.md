@@ -1,5 +1,7 @@
 # PROJECT WEEK 2
 
+![gif of roomba shark](https://media.giphy.com/media/qoxM1gi6i0V9e/giphy.gif)
+
 ### The Project
 
 To create a simple to-do app where users could add a to-do item, check off that to-do item, and delete the to-do item. A stretch goal was to order the list.
