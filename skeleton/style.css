@@ -16,8 +16,14 @@ body {
 
 .button-submit {
   border-radius: 2px;
+  border: 1px solid black;
+  box-shadow: 1px 1px;
 }
 
+.button-submit:hover {
+  border-radius: 2px;
+  border: 2px solid black;
+}
 
 .wholecontainer {
   border: 1px solid black;
@@ -82,4 +88,11 @@ body {
   margin: 0.5em;
   display: flex;
   justify-content: space-between;
+}
+
+.form-textbox {
+  border: 1px solid black;
+  padding: 0.5em;
+  height: 2em;
+  width: 30em;
 }
