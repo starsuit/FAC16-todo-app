@@ -1,11 +1,10 @@
-
 body {
   margin: 0;
   display: flex;
   justify-content: center;
 }
 
-.button-delete{
+.button-delete {
   background-color: transparent;
   height: 1.5rem;
   width: 1.5rem;
@@ -18,7 +17,6 @@ body {
   border-radius: 2px;
 }
 
-
 .wholecontainer {
   border: 1px solid black;
   border-radius: 5px 5px 0px 0px;
@@ -30,13 +28,13 @@ body {
 
 .wholecontainer-header {
   border-bottom: 1px solid grey;
-  background-color: hsl(90,42%,47%);
+  background-color: hsl(90, 42%, 47%);
   border-radius: 4px 4px 0px 0px;
 }
 
 .header__title {
   text-align: center;
-  color: hsl(0,0%,97%);
+  color: hsl(0, 0%, 97%);
 }
 
 @media only screen and (min-width: 420px) {
@@ -49,16 +47,43 @@ body {
     padding-top: 20vh;
   }
 }
-.checkbox-unchecked {
-  background-color: white;
-  height: 1.5rem;
-  width: 1.5rem;
+
+.check-label {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2.5rem 1fr;
 }
 
-.checkbox-checked {
-  background-color: rgb(140, 173, 140);
-  height: 1.5rem;
+.check-box {
+  position: absolute;
+  opacity: 0;
+}
+
+.check-mark-box {
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  border: 1px solid grey;
+}
+
+.check-mark-tick {
+  opacity: 0;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.25rem;
+  /* content: ""; */
+  /* display: inline-block; */
+  height: 0.6rem;
   width: 1.5rem;
+  border-left: 2px solid grey;
+  border-bottom: 2px solid grey;
+
+  transform: rotate(-45deg);
+}
+
+.check-box:checked + .check-mark-tick {
+  opacity: 1;
 }
 
 .todo-panel {
@@ -69,8 +94,7 @@ body {
   border-radius: 2px;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 2rem 1fr 1.5rem;
-  vertical-align: middle;
+  grid-template-columns: 1fr 1.5rem;
 }
 
 .todo-panel-container {
