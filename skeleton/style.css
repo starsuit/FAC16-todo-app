@@ -8,7 +8,7 @@ body {
 .button-delete {
   background-color: transparent;
   height: 2rem;
-  width: 1.5rem;
+  width: 2rem;
   padding: 0;
   color: tomato;
   border: 0;
@@ -134,7 +134,7 @@ body {
   border-radius: 2px;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1.5rem;
+  grid-template-columns: 1fr 2rem;
 }
 
 .todo-panel-container {
