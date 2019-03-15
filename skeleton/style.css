@@ -49,6 +49,7 @@ body {
   .wholecontainer {
     width: 420px;
     /*float: center;*/
+    margin-bottom: 5vh;
   }
 
   body {
