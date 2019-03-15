@@ -10,7 +10,7 @@ body {
   height: 1.5rem;
   width: 1.5rem;
   padding: 0;
-  color: orangered;
+  color: hsl(0,100%,20%);
   border: 0;
 }
 
@@ -42,7 +42,7 @@ body {
 
 .header__title {
   text-align: center;
-  color: hsl(0,0%,97%);
+  color: rgba(0, 0, 0, 0.883);
 }
 
 @media only screen and (min-width: 420px) {
