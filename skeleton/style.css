@@ -26,7 +26,7 @@ body {
 }
 
 .wholecontainer {
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 5px 5px 0px 0px;
   width: 100vw;
   display: flex;
@@ -82,6 +82,10 @@ body {
 .todo-panel-container {
   list-style-type: none;
   padding: 0;
+}
+
+.add-todo-container {
+  border-top: 2px solid black;
 }
 
 .form {
