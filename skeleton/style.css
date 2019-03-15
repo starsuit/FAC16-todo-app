@@ -110,6 +110,11 @@ body {
   padding: 0;
 }
 
+.todo-description {
+  display: flex;
+  align-items: center;
+}
+
 .add-todo-container {
   border-top: 2px solid black;
 }
