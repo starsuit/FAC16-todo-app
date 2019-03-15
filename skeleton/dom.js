@@ -18,6 +18,7 @@
     // you will need to use addEventListener
     todoNode.classList.add("todo-panel");
     // add span holding description
+
     let t = document.createTextNode(todo.description);
     let textSpan = document.createElement("div");
     textSpan.appendChild(t);
@@ -27,19 +28,44 @@
     var deleteButtonNode = document.createElement("button");
     deleteButtonNode.classList.add("button-delete");
     deleteButtonNode.textContent = "X";
+    deleteButtonNode.setAttribute("aria-label", "delete todo");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
 
     // add markTodo button
-    var markTodoButtonNode = document.createElement("button");
-    markTodoButtonNode.classList.add("checkbox-unchecked");
+    // create inner checkbox input
+    var checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.id = `checkbox${todo.id}`;
+    checkBox.classList.add("check-box");
+    // create visual checkbox div
+    var checkMarkBox = document.createElement("div");
+    checkMarkBox.classList.add("check-mark-box");
+
+    var checkMarkTick = document.createElement("div");
+    checkMarkTick.classList.add("check-mark-tick");
+    // create surrounding label div
+    var markTodoButtonNode = document.createElement("label");
+
+    markTodoButtonNode.htmlFor = `checkbox${todo.id}`;
+    markTodoButtonNode.classList.add("check-label");
+    markTodoButtonNode.setAttribute("aria-label", "toggle checkbox");
+
+    // append checkbox input, visual checkbox and textspan to label
+
+    markTodoButtonNode.appendChild(checkBox);
+    markTodoButtonNode.appendChild(checkMarkTick);
+    markTodoButtonNode.appendChild(checkMarkBox);
+    markTodoButtonNode.appendChild(textSpan);
+
     if (todo.done) {
-      markTodoButtonNode.classList.add("checkbox-checked");
+      checkBox.checked = true;
     } else {
-      markTodoButtonNode.classList.remove("checkbox-checked");
+      checkBox.checked = false;
     }
+
     // markTodoButtonNode.classList.add("blue");
     // markTodoButtonNode.setAttribute("type", "checkbox");
     markTodoButtonNode.addEventListener("click", function(event) {
@@ -59,7 +85,7 @@
       update(newState);
     });
     todoNode.appendChild(markTodoButtonNode);
-    todoNode.appendChild(textSpan);
+    // add classes for css
     todoNode.appendChild(deleteButtonNode);
 
     return todoNode;

@@ -6,7 +6,7 @@ body {
 
 .button-delete {
   background-color: transparent;
-  height: 1.5rem;
+  height: 2rem;
   width: 1.5rem;
   padding: 0;
   color: tomato;
@@ -57,26 +57,61 @@ body {
   .wholecontainer {
     width: 420px;
     /*float: center;*/
+    margin-bottom: 5vh;
   }
 
   body {
     padding-top: 20vh;
   }
 }
-.checkbox-unchecked {
-  background-color: white;
-  height: 1.5rem;
-  width: 1.5rem;
+
+.check-label {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2.5rem 1fr;
 }
 
-.checkbox-unchecked:hover {
-  background-color: hsl(150, 30%, 50%);
+.check-label:hover .check-mark-tick {
+  opacity: 1;
+  border-left: 2px solid hsl(150, 50%, 70%);
+  border-bottom: 2px solid hsl(150, 50%, 70%);
 }
 
-.checkbox-checked {
-  background-color: hsl(150, 50%, 50%);
-  height: 1.5rem;
-  width: 1.5rem;
+.check-box {
+  position: absolute;
+  opacity: 0;
+}
+
+.check-mark-box {
+  height: 2rem;
+  width: 2rem;
+  /* background-color: white; */
+  /* border: 1px solid grey; */
+}
+
+.check-mark-tick {
+  opacity: 0.1;
+  position: absolute;
+  top: 0.75rem;
+  left: 0.5rem;
+  /* content: ""; */
+  /* display: inline-block; */
+  height: 0.3rem;
+  width: 0.75rem;
+  border-left: 2px solid hsl(150, 50%, 50%);
+  border-bottom: 2px solid hsl(150, 50%, 50%);
+
+  transform: rotate(-45deg);
+}
+
+.check-box:checked + .check-mark-tick {
+  opacity: 1;
+}
+
+.check-box:checked ~ .todo-description {
+  text-decoration: line-through;
+  color: hsl(150, 10%, 60%);
 }
 
 .todo-description {
@@ -85,7 +120,7 @@ body {
   align-items: center;
 }
 
-.checkbox-checked + .todo-description {
+.check-box:checked + .todo-description {
   color: hsl(150, 10%, 70%);
   text-decoration: line-through;
 }
@@ -98,7 +133,7 @@ body {
   border-radius: 2px;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 2rem 1fr 1.5rem;
+  grid-template-columns: 1fr 1.5rem;
 }
 
 .todo-panel-container {
@@ -106,6 +141,15 @@ body {
   padding: 0;
   margin: 0;
   /* margin-top: 1em; */
+}
+
+.todo-description {
+  display: flex;
+  align-items: center;
+}
+
+.add-todo-container {
+  border-top: 2px solid black;
 }
 
 .form {
@@ -128,4 +172,22 @@ body {
 
 .todo-container {
   padding: 1.5em;
+}
+
+.form-textbox {
+  border: 1px solid black;
+  padding: 0.5em;
+  height: 2em;
+  width: 25em;
+}
+
+.form-label {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
