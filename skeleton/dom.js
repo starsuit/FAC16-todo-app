@@ -25,6 +25,7 @@
     var deleteButtonNode = document.createElement("button");
     deleteButtonNode.classList.add("button-delete");
     deleteButtonNode.textContent = "X";
+    deleteButtonNode.setAttribute("aria-label", "delete todo");
     deleteButtonNode.addEventListener("click", function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
@@ -34,6 +35,7 @@
     // add markTodo button
     var markTodoButtonNode = document.createElement("button");
       markTodoButtonNode.classList.add("checkbox-unchecked");
+      markTodoButtonNode.setAttribute("aria-label", "toggle checkbox");
     if (todo.done) {
       markTodoButtonNode.classList.add("checkbox-checked");
     } else {
