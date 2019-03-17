@@ -3,18 +3,25 @@
 // it keeps everything inside hidden from the rest of our application
 (function() {
   // This is the dom node where we will keep our todo
-  var container = document.getElementById("todo-container");
-  var addTodoForm = document.getElementById("add-todo");
+  const container = document.getElementById("todo-container");
+  const addTodoForm = document.getElementById("add-todo");
+  const sortDone = document.getElementById("sort-done");
+  const sortDesc = document.getElementById("sort-desc");
+  const sortDoneReverse = document.getElementById("sort-done-reverse");
+  const sortDescReverse = document.getElementById("sort-desc-reverse");
 
-  var state = [
-    { id: -3, description: "first todo" },
-    { id: -2, description: "second todo" },
-    { id: -1, description: "third todo" }
-  ]; // this is our initial todoList
+  let state = [
+    { id: -3, description: "first todo", done: true },
+    { id: -2, description: "second todo", done: false },
+    { id: -1, description: "third todo", done: true },
+    { id: -4, description: "fourth todo", done: false }
+  ];
+  // this is our initial todoList
+
+  let stateSort = "none";
 
   // This function takes a todo, it returns the DOM node representing that todo
   var createTodoNode = function(todo) {
-    console.log(todo);
     var todoNode = document.createElement("li");
     // you will need to use addEventListener
     todoNode.classList.add("todo-panel");
@@ -67,21 +74,7 @@
       checkBox.checked = false;
     }
 
-    // markTodoButtonNode.classList.add("blue");
-    // markTodoButtonNode.setAttribute("type", "checkbox");
     markTodoButtonNode.addEventListener("click", function(event) {
-      // console.log(event);
-      // console.log(markTodoButtonNode.classList);
-      // if (markTodoButtonNode.classList[0] === "blue") {
-      //   markTodoButtonNode.classList.remove("blue");
-      //   markTodoButtonNode.classList.add("red");
-      // }
-
-      // console.log(markTodoButtonNode.classList);
-      // markTodoButtonNode.classList.toggle("blue");
-      // console.log(event);
-      // console.log(event.path[0]);
-      // markTodoButtonNode.checked = false;
       var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     });
@@ -96,7 +89,6 @@
   if (addTodoForm) {
     addTodoForm.addEventListener("submit", function(event) {
       event.preventDefault();
-      console.log(event);
       var description = event.target.elements["description"].value;
       var newState = todoFunctions.addTodo(state, description);
       event.target.elements["description"].value = "";
@@ -104,10 +96,35 @@
     });
   }
 
+  const stateObj = {
+    none: () => state,
+    done: () => todoFunctions.sortTodos(state, "done"),
+    desc: () => todoFunctions.sortTodos(state, "description"),
+    doneRev: () => todoFunctions.sortTodosReverse(state, "done"),
+    descRev: () => todoFunctions.sortTodosReverse(state, "description")
+  };
+
+  // sortDesc.addEventListener("click", function() {
+  //   let newState = todoFunctions.sortTodos(state, "description");
+  //   update(newState);
+  // });
+
+  // sortDoneReverse.addEventListener("click", function() {
+  //   let newState = todoFunctions.sortTodosReverse(state, "done");
+  //   update(newState);
+  // });
+
+  // sortDescReverse.addEventListener("click", function() {
+  //   let newState = todoFunctions.sortTodosReverse(state, "description");
+  //   update(newState);
+  // });
+
   // you should not need to change this function
-  var update = function(newState) {
+  var update = function(newState, newSort = stateSort) {
     state = newState;
+    stateSort = newSort;
     renderState(state);
+    renderSort(stateSort);
   };
 
   // you do not need to change this function
@@ -123,5 +140,40 @@
     container.replaceChild(todoListNode, container.firstChild);
   };
 
+  var renderSort = function(stateSort) {
+    const sortContainer = document.querySelector(".sort-container");
+    const sortNode = document.createElement("div");
+    sortNode.classList.add("sort-button-container");
+
+    const createSortButton = sortType => {
+      const button = document.createElement("button");
+      button.classList.add("sort-button");
+      button.textContent =
+        stateSort === sortType ? `${sortType} ↑` : `${sortType} ↓`;
+      if (stateSort === sortType || stateSort === `${sortType}Rev`) {
+        button.classList.add("sort-button-selected");
+      }
+      button.addEventListener("click", function() {
+        const newStateSort =
+          stateSort === sortType ? `${sortType}Rev` : sortType;
+        const getSortedState = stateObj[newStateSort];
+        let newState = getSortedState();
+        update(newState, newStateSort);
+      });
+      return button;
+    };
+
+    const doneButton = createSortButton("done");
+    const descButton = createSortButton("desc");
+
+    sortNode.appendChild(doneButton);
+    sortNode.appendChild(descButton);
+
+    sortContainer.replaceChild(sortNode, sortContainer.firstChild);
+
+    // you may want to add a class for css
+  };
+
   if (container) renderState(state);
+  if (container) renderSort(stateSort);
 })();

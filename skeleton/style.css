@@ -5,28 +5,55 @@ body {
   font-family: system-ui, sans-serif;
 }
 
+.sort-button-container {
+  padding: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.sort-button {
+  color: hsl(150, 10%, 20%);
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  margin-right: 2em;
+}
+
+.sort-button-selected {
+  color: hsl(150, 50%, 50%);
+}
+
 .button-delete {
   background-color: transparent;
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2rem;
+  width: 2rem;
   padding: 0;
-  color: hsl(0, 100%, 20%);
+  color: tomato;
   border: 0;
+  border-radius: 2px;
+}
+
+.button-delete:hover {
+  background-color: tomato;
+  color: white;
 }
 
 .button-submit {
   border-radius: 2px;
-  border: 1px solid black;
-  box-shadow: 1px 1px;
+  color: hsl(150, 10%, 20%);
+  border: 1px solid hsl(150, 20%, 50%);
+  font-size: inherit;
 }
 
 .button-submit:hover {
-  border-radius: 2px;
-  border: 2px solid black;
+  color: white;
+  border: 1px solid white;
+  background-color: hsl(150, 50%, 50%);
 }
 
 .wholecontainer {
-  border: 2px solid black;
+  border: 1px solid hsl(150, 20%, 50%);
+
+  background-color: hsl(150, 30%, 98%);
   border-radius: 5px 5px 0px 0px;
   width: 100vw;
   display: flex;
@@ -35,14 +62,14 @@ body {
 }
 
 .wholecontainer-header {
-  border-bottom: 1px solid grey;
-  background-color: hsl(90, 42%, 47%);
+  /* border-bottom: 1px solid grey; */
+  background-color: hsl(150, 50%, 50%);
   border-radius: 4px 4px 0px 0px;
 }
 
 .header__title {
   text-align: center;
-  color: rgba(0, 0, 0, 0.883);
+  color: white;
 }
 
 @media only screen and (min-width: 420px) {
@@ -64,6 +91,12 @@ body {
   grid-template-columns: 2.5rem 1fr;
 }
 
+.check-label:hover .check-mark-tick {
+  opacity: 1;
+  border-left: 2px solid hsl(150, 50%, 70%);
+  border-bottom: 2px solid hsl(150, 50%, 70%);
+}
+
 .check-box {
   position: absolute;
   opacity: 0;
@@ -72,21 +105,21 @@ body {
 .check-mark-box {
   height: 2rem;
   width: 2rem;
-  background-color: white;
-  border: 1px solid grey;
+  /* background-color: white; */
+  /* border: 1px solid grey; */
 }
 
 .check-mark-tick {
-  opacity: 0;
+  opacity: 0.1;
   position: absolute;
-  top: 0.5rem;
-  left: 0.25rem;
+  top: 0.75rem;
+  left: 0.5rem;
   /* content: ""; */
   /* display: inline-block; */
-  height: 0.6rem;
-  width: 1.5rem;
-  border-left: 2px solid grey;
-  border-bottom: 2px solid grey;
+  height: 0.3rem;
+  width: 0.75rem;
+  border-left: 2px solid hsl(150, 50%, 50%);
+  border-bottom: 2px solid hsl(150, 50%, 50%);
 
   transform: rotate(-45deg);
 }
@@ -95,20 +128,39 @@ body {
   opacity: 1;
 }
 
+.check-box:checked ~ .todo-description {
+  text-decoration: line-through;
+  color: hsl(150, 10%, 60%);
+}
+
+.todo-description {
+  color: hsl(150, 10%, 20%);
+  display: flex;
+  align-items: center;
+}
+
+.check-box:checked + .todo-description {
+  color: hsl(150, 10%, 70%);
+  text-decoration: line-through;
+}
+
 .todo-panel {
-  background-color: rgb(140, 173, 140);
-  border: solid grey;
-  margin: 0.5em;
+  /* background-color: rgb(140, 173, 140); */
+  border: 1px solid hsl(150, 20%, 50%);
+  background-color: white;
+  margin-bottom: 0.5em;
   padding: 0.5em;
   border-radius: 2px;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1.5rem;
+  grid-template-columns: 1fr 2rem;
 }
 
 .todo-panel-container {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+  /* margin-top: 1em; */
 }
 
 .todo-description {
@@ -121,9 +173,26 @@ body {
 }
 
 .form {
-  margin: 0.5em;
-  display: flex;
-  justify-content: space-between;
+  /* margin: 0.5em; */
+  padding: 1.5em;
+  padding-top: 0;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 4fr 1fr;
+  grid-gap: 0.5rem;
+}
+
+.todo-input {
+  height: 2rem;
+  font-size: inherit;
+  border: 1px solid hsl(150, 20%, 50%);
+  color: hsl(150, 10%, 20%);
+  padding-left: 0.5em;
+}
+
+.todo-container {
+  padding: 1.5em;
+  padding-top: 0;
 }
 
 .form-textbox {
