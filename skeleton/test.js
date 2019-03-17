@@ -170,43 +170,269 @@ test("markTodo returns an array", t => {
 test("markTodo returns array changes the content, but NOT length", t => {
   const actual = logic.markTodo(testArray, 0);
   const expected = testArray;
-  t.notDeepEqual(actual, expected, "markTodo should return an array with changed content, same length");
-  t.equal(actual.length, expected.length, "markTodo has not changed the length")
+  t.notDeepEqual(
+    actual,
+    expected,
+    "markTodo should return an array with changed content, same length"
+  );
+  t.equal(
+    actual.length,
+    expected.length,
+    "markTodo has not changed the length"
+  );
   t.end();
 });
 
 test("markTodo returns array with specified object, done value toggled", t => {
   const actual = logic.markTodo(testArray, 0);
-  const expected = [{
-    id: 0,
-    description: "tester",
-    done: true
-  },
-  {
-    id: 1,
-    description: "do some code",
-    done: false
-  }
-];
+  const expected = [
+    {
+      id: 0,
+      description: "tester",
+      done: true
+    },
+    {
+      id: 1,
+      description: "do some code",
+      done: false
+    }
+  ];
   t.deepEqual(actual, expected, "markTodo should feature a toggled done");
 
   t.end();
 });
 
 test("markTodo returns array with toggled done, toggled back to false", t => {
-  const actual = logic.markTodo([{
+  const actual = logic.markTodo(
+    [
+      {
+        id: 0,
+        description: "tester",
+        done: true
+      },
+      {
+        id: 1,
+        description: "do some code",
+        done: false
+      }
+    ],
+    0
+  );
+  const expected = testArray;
+  t.deepEqual(
+    actual,
+    expected,
+    "markTodo should feature a toggled done, toggled back to false"
+  );
+
+  t.end();
+});
+
+const sortTestArray = [
+  {
     id: 0,
     description: "tester",
+    done: false
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: true
+  },
+  {
+    id: 3,
+    description: "a",
+    done: false
+  },
+  {
+    id: 2,
+    description: "z",
+    done: true
+  }
+];
+
+const sortedTestArrayId = [
+  {
+    id: 0,
+    description: "tester",
+    done: false
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: true
+  },
+  {
+    id: 2,
+    description: "z",
+    done: true
+  },
+  {
+    id: 3,
+    description: "a",
+    done: false
+  }
+];
+
+const sortedTestArrayDesc = [
+  {
+    id: 3,
+    description: "a",
+    done: false
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: true
+  },
+  {
+    id: 0,
+    description: "tester",
+    done: false
+  },
+  {
+    id: 2,
+    description: "z",
+    done: true
+  }
+];
+
+const sortedTestArrayDone = [
+  {
+    id: 0,
+    description: "tester",
+    done: false
+  },
+  {
+    id: 3,
+    description: "a",
+    done: false
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: true
+  },
+  {
+    id: 2,
+    description: "z",
+    done: true
+  }
+];
+
+test("sortTodos returns array sorted by an attribute", t => {
+  t.equals(
+    Array.isArray(logic.sortTodos(sortTestArray, "id")),
+    true,
+    "sortTodos should return an array"
+  );
+  t.deepEqual(
+    logic.sortTodos(sortTestArray, "id"),
+    sortedTestArrayId,
+    "sortTodos should return an array sorted by id"
+  );
+  t.deepEqual(
+    logic.sortTodos(sortTestArray, "description"),
+    sortedTestArrayDesc,
+    "sortTodos should return an array sorted by description"
+  );
+  t.deepEqual(
+    logic.sortTodos(sortTestArray, "done"),
+    sortedTestArrayDone,
+    "sortTodos should return an array sorted by done status"
+  );
+  t.end();
+});
+
+const sortedTestArrayIdReverse = [
+  {
+    id: 3,
+    description: "a",
+    done: false
+  },
+  {
+    id: 2,
+    description: "z",
     done: true
   },
   {
     id: 1,
     description: "do some code",
+    done: true
+  },
+  {
+    id: 0,
+    description: "tester",
     done: false
   }
-], 0);
-  const expected = testArray;
-  t.deepEqual(actual, expected, "markTodo should feature a toggled done, toggled back to false");
+];
 
+const sortedTestArrayDescReverse = [
+  {
+    id: 2,
+    description: "z",
+    done: true
+  },
+  {
+    id: 0,
+    description: "tester",
+    done: false
+  },
+  {
+    id: 1,
+    description: "do some code",
+    done: true
+  },
+  {
+    id: 3,
+    description: "a",
+    done: false
+  }
+];
+
+const sortedTestArrayDoneReverse = [
+  {
+    id: 1,
+    description: "do some code",
+    done: true
+  },
+  {
+    id: 2,
+    description: "z",
+    done: true
+  },
+  {
+    id: 0,
+    description: "tester",
+    done: false
+  },
+  {
+    id: 3,
+    description: "a",
+    done: false
+  }
+];
+
+test("sortTodosReverse returns array reverse-sorted by an attribute", t => {
+  t.equals(
+    Array.isArray(logic.sortTodosReverse(sortTestArray, "id")),
+    true,
+    "sortTodosReverse should return an array"
+  );
+  t.deepEqual(
+    logic.sortTodosReverse(sortTestArray, "id"),
+    sortedTestArrayIdReverse,
+    "sortTodosReverse should return an array reverse-sorted by id"
+  );
+  t.deepEqual(
+    logic.sortTodosReverse(sortTestArray, "description"),
+    sortedTestArrayDescReverse,
+    "sortTodosReverse should return an array reverse-sorted by description"
+  );
+  t.deepEqual(
+    logic.sortTodosReverse(sortTestArray, "done"),
+    sortedTestArrayDoneReverse,
+    "sortTodosReverse should return an array reverse-sorted by done status"
+  );
   t.end();
 });

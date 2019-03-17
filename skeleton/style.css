@@ -5,6 +5,23 @@ body {
   font-family: system-ui, sans-serif;
 }
 
+.sort-button-container {
+  padding: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.sort-button {
+  color: hsl(150, 10%, 20%);
+  background-color: transparent;
+  border: none;
+  font-size: inherit;
+  margin-right: 2em;
+}
+
+.sort-button-selected {
+  color: hsl(150, 50%, 50%);
+}
+
 .button-delete {
   background-color: transparent;
   height: 2rem;
@@ -23,7 +40,6 @@ body {
 .button-submit {
   border-radius: 2px;
   color: hsl(150, 10%, 20%);
-
   border: 1px solid hsl(150, 20%, 50%);
   font-size: inherit;
 }
@@ -36,6 +52,8 @@ body {
 
 .wholecontainer {
   border: 1px solid hsl(150, 20%, 50%);
+
+  background-color: hsl(150, 30%, 98%);
   border-radius: 5px 5px 0px 0px;
   width: 100vw;
   display: flex;
@@ -129,6 +147,7 @@ body {
 .todo-panel {
   /* background-color: rgb(140, 173, 140); */
   border: 1px solid hsl(150, 20%, 50%);
+  background-color: white;
   margin-bottom: 0.5em;
   padding: 0.5em;
   border-radius: 2px;
@@ -173,6 +192,7 @@ body {
 
 .todo-container {
   padding: 1.5em;
+  padding-top: 0;
 }
 
 .form-textbox {

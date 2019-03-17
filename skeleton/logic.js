@@ -44,9 +44,9 @@ var todoFunctions = {
   },
   markTodo: function(todos, idToMark) {
     let newObj = todoFunctions.cloneArrayOfObjects(todos);
-      return newObj.map(todo => {
+    return newObj.map(todo => {
       if (todo.id === idToMark) {
-        todo.done = !todo.done
+        todo.done = !todo.done;
       }
       return todo;
     });
@@ -56,6 +56,63 @@ var todoFunctions = {
     // hint: array.map
   },
   sortTodos: function(todos, sortFunction) {
+    // console.log("hai");
+    let newObj = todoFunctions.cloneArrayOfObjects(todos);
+    newObj.sort(function(a, b) {
+      const nameA = a[sortFunction];
+      const nameB = b[sortFunction];
+      // console.log({ nameA, nameB });
+      if (typeof nameA === "number" && typeof nameB === "number") {
+        // console.log("num");
+        return nameA - nameB;
+      } else if (typeof nameA === "boolean" && typeof nameB === "boolean") {
+        // console.log("bool");
+        return nameA === nameB ? 0 : nameA ? 1 : -1;
+      } else if (typeof nameA === "string" && typeof nameB === "string") {
+        // console.log("string");
+        if (nameA.toUpperCase() < nameB.toUpperCase()) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      }
+    });
+    // console.log(newObj);
+    return newObj;
+    // stretch goal! Do this last
+    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
+    // sortFunction will have same signature as the sort function in array.sort
+    // hint: array.slice, array.sort
+  },
+
+  sortTodosReverse: function(todos, sortFunction) {
+    // console.log("hai");
+    let newObj = todoFunctions.cloneArrayOfObjects(todos);
+    newObj.sort(function(a, b) {
+      const nameA = a[sortFunction];
+      const nameB = b[sortFunction];
+      // console.log({ nameA, nameB });
+      if (typeof nameA === "number" && typeof nameB === "number") {
+        // console.log("num");
+        return nameB - nameA;
+      } else if (typeof nameA === "boolean" && typeof nameB === "boolean") {
+        // console.log("bool");
+        return nameA === nameB ? 0 : nameA ? -1 : 1;
+      } else if (typeof nameA === "string" && typeof nameB === "string") {
+        // console.log("string");
+        if (nameA.toUpperCase() > nameB.toUpperCase()) {
+          return -1;
+        }
+        if (nameA < nameB) {
+          return 1;
+        }
+        return 0;
+      }
+    });
+    // console.log(newObj);
+    return newObj;
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
     // sortFunction will have same signature as the sort function in array.sort
